@@ -1,0 +1,17 @@
+<ng-template #notFound>
+  <h2 class="thai-font">
+    ไม่พบข้อมูล
+  </h2>
+</ng-template>
+
+<mat-list *ngIf="message; else notFound">
+  <mat-list-item>
+    <b>Email</b> : {{email}}
+  </mat-list-item>
+  <mat-list-item>
+    <b class="thai-font">เวลาที่จอง</b> : {{message.time}}
+  </mat-list-item>
+  <mat-list-item>
+    <b>Link Zoom</b> : &nbsp; <a [href]="message.link">{{message.link}}</a>
+  </mat-list-item>
+</mat-list>

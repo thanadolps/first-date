@@ -1,0 +1,44 @@
+<!-- === -->
+
+<mat-toolbar class="cu-color">{{title}}</mat-toolbar>
+
+<mat-card>
+
+  <mat-form-field style="width: 100%">
+    <mat-label>Email</mat-label>
+    <input matInput #emailInput
+           (input)="updateValidation(emailInput)"
+           placeholder="Email"
+           type="email">
+  </mat-form-field>
+
+  <br>
+  <button mat-button
+          class="cu-color"
+          (click)="submitEmail(emailInput.value)"
+          [disabled]="!validity || loading">
+    Submit
+  </button>
+
+  <ng-container *ngIf="{'0' : message$| async} as message">
+    <ng-container *ngIf="loaded">
+      <app-display-message
+        [message]="message['0']"
+        [email]="emailSnapShot">
+      </app-display-message>
+
+      <mat-divider></mat-divider>
+
+      <app-display-contracter
+        [contractors]="contractors"
+        *ngIf="loaded">
+      </app-display-contracter>
+    </ng-container>
+
+    <ng-container *ngIf="loading">
+      <br>
+      <mat-progress-bar mode="buffer"></mat-progress-bar>
+    </ng-container>
+  </ng-container>
+
+</mat-card>

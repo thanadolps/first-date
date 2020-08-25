@@ -1,0 +1,26 @@
+<br>
+<h3 class="thai-font" style="margin: 0">
+  <u>สำหรับใครที่พบปัญหาสามารถติดต่อได้ที่</u>
+</h3>
+
+<mat-list *ngFor="let contractor of contractors">
+  <mat-list-item>
+        <span class="thai-font">
+          <b>{{contractor.name}}</b>
+        </span>
+  </mat-list-item>
+
+  <mat-list-item>
+    FB : {{contractor.facebook}}
+    <button mat-icon-button (click)="openUrl(fbl)" *ngIf="contractor.facebookLink as fbl">
+      <mat-icon class="scale-75">launch</mat-icon>
+    </button>
+  </mat-list-item>
+
+  <mat-list-item>
+    Line ID : {{contractor.line}}
+    <button mat-icon-button (click)="openUrl('http://line.me/ti/p/~' + contractor.line)">
+      <mat-icon class="scale-75">launch</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
